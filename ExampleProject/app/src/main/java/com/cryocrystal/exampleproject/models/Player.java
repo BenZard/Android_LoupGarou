@@ -2,18 +2,18 @@ package com.cryocrystal.exampleproject.models;
 
 public class Player {
     private String name;
-    private Role role;
+    private Team team;
 
     public Player(String name) {
         this.name = name;
-        role = Role.VILLAGER;
+        team = Team.NEUTRE;
     }
 
     public String getName() {
         return name;
     }
 
-    public Role getRole() {
-        return role;
+    public Team getTeam() {
+        return team;
     }
 }

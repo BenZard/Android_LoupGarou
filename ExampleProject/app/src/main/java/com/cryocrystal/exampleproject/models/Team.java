@@ -2,14 +2,14 @@ package com.cryocrystal.exampleproject.models;
 
 import com.cryocrystal.exampleproject.R;
 
-public enum Role {
-    WEREWOLF(R.drawable.loup_garou),
-    SEER(R.drawable.voyante),
-    VILLAGER(R.drawable.villageois);
+public enum Team {
+    BLUE(R.drawable.blue),
+    YELLOW(R.drawable.yellow),
+    NEUTRE(R.drawable.neutral);
 
     private final int drawableRes;
 
-    Role(int drawableRes){
+    Team(int drawableRes){
         this.drawableRes = drawableRes;
     }
 
