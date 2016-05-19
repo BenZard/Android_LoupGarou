@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ListPlayersActivity"
+        <activity android:name=".activities.AccueilActivity"
                   android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -19,6 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activities.DisplayImageActivity"/>
+        <activity android:name=".activities.ListPlayersActivity"/>
         <activity android:name=".activities.FetchImageActivity"/>
         <activity android:name=".activities.GalleryActivity"/>
     </application>
