@@ -19,7 +19,7 @@ public class AccueilActivity extends AppCompatActivity {
     }
 
     public void GotoListPlayers(View v){
-        Intent exampleActivityIntent = new Intent(this, DisplayImageActivity.class);
+        Intent exampleActivityIntent = new Intent(this, ListPlayersActivity.class);
         startActivity(exampleActivityIntent);
     }
 

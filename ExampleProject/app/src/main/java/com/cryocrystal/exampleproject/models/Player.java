@@ -16,4 +16,11 @@ public class Player {
     public Team getTeam() {
         return team;
     }
+
+    public  void setName(String name){
+        this.name = name;
+    }
+    public  void setTeam(Team team){
+        this.team = team;
+    }
 }

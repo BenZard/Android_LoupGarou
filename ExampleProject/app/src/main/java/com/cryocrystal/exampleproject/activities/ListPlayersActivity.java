@@ -59,6 +59,10 @@ public class ListPlayersActivity extends AppCompatActivity implements View.OnCli
         if (!playerName.isEmpty()){
             playersAdapter.add(new Player(playerName));
             playerEditText.getText().clear();
+            if (playersAdapter.getCount() == 4){
+                Button play = (Button) findViewById(R.id.btnPlay);
+                play.setVisibility(View.VISIBLE);
+            }
         }
 
         for (int i = 0; i < playersAdapter.getCount(); i++){
@@ -71,4 +75,6 @@ public class ListPlayersActivity extends AppCompatActivity implements View.OnCli
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         playersAdapter.setEditMode(isChecked);
     }
+
+
 }

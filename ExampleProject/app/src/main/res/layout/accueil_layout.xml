@@ -27,7 +27,7 @@
 
     <Button
         android:layout_alignParentBottom="true"
-        android:onClick="GotoListPlayers"
+            android:onClick="GotoListPlayers"
         android:text="Jouer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

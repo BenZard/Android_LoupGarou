@@ -20,6 +20,7 @@
         android:layout_alignParentBottom="true"
         android:hint="@string/players_name"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
         android:layout_width="150dp"
         android:layout_height="wrap_content"/>
 
@@ -28,9 +29,18 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/player_edit_text"
         android:layout_toEndOf="@id/player_edit_text"
+        android:layout_marginBottom="50dp"
         android:text="@string/add_player"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btnPlay"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lancerla partie"/>
 
     <android.support.v7.widget.ListViewCompat
         android:id="@+id/player_list_view"
