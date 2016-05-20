@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.cryocrystal.exampleproject.R;
+import com.cryocrystal.exampleproject.models.ListMots;
 
 public class WordsAdapter extends ArrayAdapter<String> {
     private static final int layoutResource = R.layout.item_words;
@@ -24,21 +25,17 @@ public class WordsAdapter extends ArrayAdapter<String> {
         if (convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(layoutResource, parent, false);
         }
-
         final String word = getItem(position);
         TextView wordName = (TextView) convertView.findViewById(R.id.word_text_view);
         wordName.setText(word);
-
         Button buttonDelete = (Button) convertView.findViewById(R.id.delete_word_button);
         buttonDelete.setVisibility(inEditMode ? View.VISIBLE : View.GONE);
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 remove(word);
-
             }
         });
-
         return convertView;
     }
 }

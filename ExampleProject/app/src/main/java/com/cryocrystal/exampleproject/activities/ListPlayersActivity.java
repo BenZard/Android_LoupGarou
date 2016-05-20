@@ -17,6 +17,9 @@ import com.cryocrystal.exampleproject.R;
 import com.cryocrystal.exampleproject.adapters.PlayersAdapter;
 import com.cryocrystal.exampleproject.models.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListPlayersActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private ListViewCompat playerListView;
@@ -68,8 +71,10 @@ public class ListPlayersActivity extends AppCompatActivity implements View.OnCli
             }
         }
 
+        List<Player> players = new ArrayList<>();
+
         for (int i = 0; i < playersAdapter.getCount(); i++){
-            playersAdapter.getItem(i);
+            players.add(playersAdapter.getItem(i));
         }
 
     }
