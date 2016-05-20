@@ -12,7 +12,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.cryocrystal.exampleproject.R;
-import com.cryocrystal.exampleproject.activities.ListPlayersActivity;
 import com.cryocrystal.exampleproject.models.Player;
 import com.cryocrystal.exampleproject.models.Team;
 
