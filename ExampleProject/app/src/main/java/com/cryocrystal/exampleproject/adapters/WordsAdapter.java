@@ -8,9 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cryocrystal.exampleproject.R;
-import com.cryocrystal.exampleproject.models.ListMots;
 import com.cryocrystal.exampleproject.models.Word;
 
 public class WordsAdapter extends ArrayAdapter<Word> {
@@ -29,6 +29,8 @@ public class WordsAdapter extends ArrayAdapter<Word> {
         final Word word = getItem(position);
         TextView wordName = (TextView) convertView.findViewById(R.id.word_text_view);
         wordName.setText(word.getName());
+
+
         Button buttonDelete = (Button) convertView.findViewById(R.id.delete_word_button);
         buttonDelete.setVisibility(inEditMode ? View.VISIBLE : View.GONE);
         buttonDelete.setOnClickListener(new View.OnClickListener() {
@@ -42,5 +44,6 @@ public class WordsAdapter extends ArrayAdapter<Word> {
 
     public void setEditMode(boolean editMode) {
         this.inEditMode = editMode;
+        notifyDataSetChanged();
     }
 }

@@ -16,9 +16,7 @@ import com.cryocrystal.exampleproject.models.Team;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Riper on 20/05/2016.
- */
+
 public class GameActivity extends AppCompatActivity {
 
     public int pos;

@@ -38,7 +38,7 @@ public class ListWordsActivity extends AppCompatActivity implements View.OnClick
         wordListView = (ListViewCompat) findViewById(R.id.word_list_view);
         wordEditText = (EditText) findViewById(R.id.word_edit_text);
         wordAddButton = (Button) findViewById(R.id.button_add_word);
-        editModeCheckbox = (CheckBox) findViewById(R.id.edition_checkbox);
+        editModeCheckbox = (CheckBox) findViewById(R.id.word_checkbox);
 
         if (wordAddButton != null) {
             wordAddButton.setOnClickListener(this);
@@ -65,15 +65,15 @@ public class ListWordsActivity extends AppCompatActivity implements View.OnClick
         if (!playerName.isEmpty()){
             wordsAdapter.add(new Word(playerName));
             wordEditText.getText().clear();
-            if (wordsAdapter.getCount() == 4){
+            if (wordsAdapter.getCount() == 10){
                 Button play = (Button) findViewById(R.id.btnLaunchGame);
                 play.setVisibility(View.VISIBLE);
             }
         }
-        List<Word> players = new ArrayList<>();
+        /*List<Word> words = new ArrayList<>();
         for (int i = 0; i < wordsAdapter.getCount(); i++){
-            players.add(wordsAdapter.getItem(i));
-        }
+            words.add(wordsAdapter.getItem(i));
+        }*/
 
     }
 
@@ -82,15 +82,15 @@ public class ListWordsActivity extends AppCompatActivity implements View.OnClick
         Button play = (Button) findViewById(R.id.btnLaunchGame);
         play.setVisibility(View.INVISIBLE);
         wordsAdapter.setEditMode(isChecked);
-        if ((wordsAdapter.getCount() >= 4)&&(isChecked == false)){
+        if ((wordsAdapter.getCount() >= 10)&&(isChecked == false)){
 
             play.setVisibility(View.VISIBLE);
         }
     }
 
     public void launchGame(View v){
-        Intent exampleActivityIntent = new Intent(this, GameActivity.class);
-        startActivity(exampleActivityIntent);
+        Intent gameActivityIntent = new Intent(this, GameActivity.class);
+        startActivity(gameActivityIntent);
     }
 
 }

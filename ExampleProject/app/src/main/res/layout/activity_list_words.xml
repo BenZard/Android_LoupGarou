@@ -4,7 +4,7 @@
 
 
     <CheckBox
-        android:id="@+id/edition_checkbox"
+        android:id="@+id/word_checkbox"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
@@ -26,8 +26,8 @@
     <Button
         android:id="@+id/button_add_word"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/player_edit_text"
-        android:layout_toEndOf="@id/player_edit_text"
+        android:layout_toRightOf="@id/word_edit_text"
+        android:layout_toEndOf="@id/word_edit_text"
         android:layout_marginBottom="50dp"
         android:text="@string/add_player"
         android:layout_width="wrap_content"
@@ -45,8 +45,8 @@
     <android.support.v7.widget.ListViewCompat
         android:id="@+id/word_list_view"
         android:layout_marginBottom="5dp"
-        android:layout_above="@id/player_edit_text"
-        android:layout_below="@id/edition_checkbox"
+        android:layout_above="@id/word_edit_text"
+        android:layout_below="@+id/word_checkbox"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </RelativeLayout>
