@@ -1,11 +1,14 @@
 package com.cryocrystal.exampleproject.activities;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringDef;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ButtonBarLayout;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +19,9 @@ import com.cryocrystal.exampleproject.*;
 import com.cryocrystal.exampleproject.models.Player;
 import com.cryocrystal.exampleproject.models.Team;
 import com.cryocrystal.exampleproject.models.Word;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.w3c.dom.Text;
 
@@ -36,9 +42,13 @@ public class GameActivity extends AppCompatActivity {
     public ArrayList<Word> mots;
     public ArrayList<Player> teamA;
     public ArrayList<Player> teamB;
+    public ArrayList<Word> swipedWords;
+    public ArrayList<Player> tableplayers;
     public TextView currentMot;
     public TextView timertext;
-    public TextView nbMots;
+    public TextView score;
+    public int scoreA = 0;
+    public int scoreB = 0;
 
     public int cpt = 30;
     public boolean timerStart = false;
@@ -55,14 +65,16 @@ public class GameActivity extends AppCompatActivity {
         indexPlayer = 0;
         teamA = new ArrayList<>();
         teamB = new ArrayList<>();
+        tableplayers = new ArrayList<>();
+        swipedWords = new ArrayList<>();
 
         timertext = (TextView) findViewById(R.id.timer);
         currentMot = (TextView) findViewById(R.id.currentMot);
-        nbMots = (TextView) findViewById(R.id.nbmots);
+        score = (TextView) findViewById(R.id.score);
 
-        ListMots listMots = new ListMots();
+        ListMots listMots = ListWordsActivity.wordsList;
         mots = listMots.getMots();
-        currentMot.setText(mots.get(0));
+        currentMot.setText(mots.get(0).getName());
 
         if (ListPlayersActivity.players != null) {
             for (int i = 0; i < ListPlayersActivity.players.size(); i++) {
@@ -71,6 +83,10 @@ public class GameActivity extends AppCompatActivity {
                 } else if (ListPlayersActivity.players.get(i).getTeam() == Team.YELLOW) {
                     teamB.add(ListPlayersActivity.players.get(i));
                 }
+            }
+            for (int i = 0; i < teamA.size(); i++) {
+                tableplayers.add(teamA.get(i));
+                tableplayers.add(teamB.get(i));
             }
         }
 
@@ -81,9 +97,16 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
 
         TextView playerText = (TextView) findViewById(R.id.currentPlayer);
-        playerText.setText(teamA.get(indexPlayer).getName());
-        nbMots.setText(String.valueOf(mots.size()));
-        currentMot.setText(mots.get(pos));
+        playerText.setText(tableplayers.get(indexPlayer).getName());
+
+        if(tableplayers.get(indexPlayer).getTeam() == Team.BLUE){
+            score.setText(String.valueOf(scoreA));
+        }else {
+            score.setText(String.valueOf(scoreB));
+        }
+
+        currentMot.setText(mots.get(pos).getName());
+        currentMot.setVisibility(View.GONE);
 
         ImageView img = (ImageView) findViewById(R.id.img_game);
         img.setOnTouchListener(new OnSwipeTouchListener(this) {
@@ -91,27 +114,41 @@ public class GameActivity extends AppCompatActivity {
             }
 
             public void onSwipeLeft() {
-                if(timerStart) {
+                if (timerStart) {
                     if (pos + 1 <= mots.size()) {
                         pos++;
-                        currentMot.setText(mots.get(pos));
+                        currentMot.setText(mots.get(pos).getName());
+                    }else {
+                        pos = 0;
+                        mots = swipedWords;
                     }
                     Toast.makeText(GameActivity.this, "Mot suivant", Toast.LENGTH_LONG).show();
-                }else{
+                    if(tableplayers.get(indexPlayer).getTeam() == Team.BLUE){
+                        scoreA += 1;
+                        score.setText(String.valueOf(scoreA));
+                    }else {
+                        scoreB += 1;
+                        score.setText(String.valueOf(scoreB));
+                    }
+                } else {
                     Toast.makeText(GameActivity.this, "Il faut démarrer le timer", Toast.LENGTH_LONG).show();
                 }
             }
 
             public void onSwipeRight() {
-                if(timerStart) {
-                    mots.remove(pos);
-                    nbMots.setText(String.valueOf(mots.size()));
+                if (timerStart) {
+
+                    swipedWords.add(mots.get(pos));
+                    //mots.remove(pos);
                     if (pos + 1 <= mots.size()) {
                         pos++;
-                        currentMot.setText(mots.get(pos));
+                        currentMot.setText(mots.get(pos).getName());
+                    }else {
+                        pos = 0;
+                        mots = swipedWords;
                     }
                     Toast.makeText(GameActivity.this, "Passez le tour", Toast.LENGTH_LONG).show();
-                }else{
+                } else {
                     Toast.makeText(GameActivity.this, "Il faut démarrer le timer", Toast.LENGTH_LONG).show();
                 }
             }
@@ -122,7 +159,9 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-    public void timerStart(View v){
+    public void timerStart(View v) {
+        Button timer = (Button) findViewById(R.id.starttimerbtn);
+        timer.setVisibility(View.INVISIBLE);
         startTimer();
         currentMot.setVisibility(View.VISIBLE);
     }
@@ -147,6 +186,19 @@ public class GameActivity extends AppCompatActivity {
             timer = null;
         }
         timerStart = false;
+        indexPlayer += 1;
+        if (indexPlayer <= tableplayers.size()) {
+            TextView playerText = (TextView) findViewById(R.id.currentPlayer);
+            playerText.setText(tableplayers.get(indexPlayer).getName());
+        }
+        Button timer = (Button) findViewById(R.id.starttimerbtn);
+        timer.setVisibility(View.VISIBLE);
+
+        if(tableplayers.get(indexPlayer).getTeam() == Team.BLUE){
+            score.setText(String.valueOf(scoreA));
+        }else {
+            score.setText(String.valueOf(scoreB));
+        }
     }
 
     public void initializeTimerTask() {
@@ -163,10 +215,10 @@ public class GameActivity extends AppCompatActivity {
                         final String strDate = simpleDateFormat.format(calendar.getTime());
 
                         //show the toast
-                        cpt-=1;
+                        cpt -= 1;
                         timertext.setText(String.valueOf(cpt));
-                        if(cpt <= 0){
-                            cpt=30;
+                        if (cpt <= 0) {
+                            cpt = 30;
                             timertext.setText(String.valueOf(cpt));
                             currentMot.setVisibility(View.GONE);
                             stopTimer();

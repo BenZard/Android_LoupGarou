@@ -52,14 +52,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NBMots"
+        android:text="Score"
         android:layout_alignParentBottom="true"
-        android:id="@+id/nbmots"
+        android:id="@+id/score"
+        android:textSize="20sp"
         />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Démarrer le timer"
+        android:id="@+id/starttimerbtn"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="timerStart"

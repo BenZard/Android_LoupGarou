@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.cryocrystal.exampleproject.R;
 import com.cryocrystal.exampleproject.adapters.WordsAdapter;
 import com.cryocrystal.exampleproject.models.ListMots;
+import com.cryocrystal.exampleproject.models.Team;
 import com.cryocrystal.exampleproject.models.Word;
 
 import java.io.Console;
@@ -73,7 +74,7 @@ public class ListWordsActivity extends AppCompatActivity implements View.OnClick
                 play.setVisibility(View.VISIBLE);
             }
         }
-
+        wordsList = new ListMots();
         for (int i = 0; i < wordsAdapter.getCount(); i++){
             wordsList.addMot(wordsAdapter.getItem(i));
         }
@@ -91,9 +92,12 @@ public class ListWordsActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    public void launchGame(View v){
-        Intent gameActivityIntent = new Intent(this, GameActivity.class);
-        startActivity(gameActivityIntent);
+    public void launchGame(View v) {
+        Intent gameActIntent = new Intent(this, GameActivity.class);
+        for (int i = 0; i < wordsAdapter.getCount(); i++) {
+            wordsList.addMot(wordsAdapter.getItem(i));
+        }
+        startActivity(gameActIntent);
     }
 
 }

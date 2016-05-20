@@ -100,7 +100,7 @@ public class ListPlayersActivity extends AppCompatActivity implements View.OnCli
             }
         }
         if(teamok) {
-            Intent listeWord = new Intent(this, GameActivity.class);
+            Intent listeWord = new Intent(this, ListWordsActivity.class);
             players = new ArrayList<>();
             for (int i = 0; i < playersAdapter.getCount(); i++) {
                 players.add(playersAdapter.getItem(i));
