@@ -35,9 +35,9 @@ public class ListWordsActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_words);
 
-        wordListView = (ListViewCompat) findViewById(R.id.player_list_view);
-        wordEditText = (EditText) findViewById(R.id.player_edit_text);
-        wordAddButton = (Button) findViewById(R.id.button_add_player);
+        wordListView = (ListViewCompat) findViewById(R.id.word_list_view);
+        wordEditText = (EditText) findViewById(R.id.word_edit_text);
+        wordAddButton = (Button) findViewById(R.id.button_add_word);
         editModeCheckbox = (CheckBox) findViewById(R.id.edition_checkbox);
 
         if (wordAddButton != null) {
@@ -66,7 +66,7 @@ public class ListWordsActivity extends AppCompatActivity implements View.OnClick
             wordsAdapter.add(new Word(playerName));
             wordEditText.getText().clear();
             if (wordsAdapter.getCount() == 4){
-                Button play = (Button) findViewById(R.id.btnPlay);
+                Button play = (Button) findViewById(R.id.btnLaunchGame);
                 play.setVisibility(View.VISIBLE);
             }
         }
@@ -82,7 +82,7 @@ public class ListWordsActivity extends AppCompatActivity implements View.OnClick
         Button play = (Button) findViewById(R.id.btnLaunchGame);
         play.setVisibility(View.INVISIBLE);
         wordsAdapter.setEditMode(isChecked);
-        if (wordsAdapter.getCount() >= 4){
+        if ((wordsAdapter.getCount() >= 4)&&(isChecked == false)){
 
             play.setVisibility(View.VISIBLE);
         }
