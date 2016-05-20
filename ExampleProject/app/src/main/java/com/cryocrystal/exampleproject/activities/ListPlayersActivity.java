@@ -85,7 +85,7 @@ public class ListPlayersActivity extends AppCompatActivity implements View.OnCli
         Button play = (Button) findViewById(R.id.btnPlay);
         play.setVisibility(View.INVISIBLE);
         playersAdapter.setEditMode(isChecked);
-        if (playersAdapter.getCount() >= 4){
+        if ((playersAdapter.getCount() >= 4)&&(isChecked == false)){
 
             play.setVisibility(View.VISIBLE);
         }
