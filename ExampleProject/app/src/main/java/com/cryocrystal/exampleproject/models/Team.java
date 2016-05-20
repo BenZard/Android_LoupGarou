@@ -7,6 +7,7 @@ public enum Team {
     YELLOW(R.drawable.yellow),
     NEUTRE(R.drawable.neutral);
 
+    private int score;
     private final int drawableRes;
 
     Team(int drawableRes){
