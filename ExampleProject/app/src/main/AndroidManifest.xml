@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".activities.DisplayImageActivity"/>
         <activity android:name=".activities.ListPlayersActivity"/>
+        <activity android:name=".activities.ListWordsActivity"/>
         <activity android:name=".activities.FetchImageActivity"/>
         <activity android:name=".activities.GalleryActivity"/>
         <activity android:name=".activities.GameActivity"/>
