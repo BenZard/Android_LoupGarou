@@ -18,6 +18,7 @@ import com.cryocrystal.exampleproject.adapters.WordsAdapter;
 import com.cryocrystal.exampleproject.models.ListMots;
 import com.cryocrystal.exampleproject.models.Word;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 

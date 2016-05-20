@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.cryocrystal.exampleproject.R;
 import com.cryocrystal.exampleproject.adapters.PlayersAdapter;
 import com.cryocrystal.exampleproject.models.Player;
+import com.cryocrystal.exampleproject.models.Team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,13 +93,22 @@ public class ListPlayersActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void launchGame(View v){
-        Intent listeWord = new Intent(this, ListWordsActivity.class);
-            /*
-        players = new ArrayList<>();
-        for (int i = 0; i < playersAdapter.getCount(); i++){
-            players.add(playersAdapter.getItem(i));
-        }*/
-        startActivity(listeWord);
+        Boolean teamok = true;
+        for (int i = 0; i < playersAdapter.getCount(); i++) {
+            if(playersAdapter.getItem(i).getTeam() == Team.NEUTRE){
+                teamok = false;
+            }
+        }
+        if(teamok) {
+            Intent listeWord = new Intent(this, GameActivity.class);
+            players = new ArrayList<>();
+            for (int i = 0; i < playersAdapter.getCount(); i++) {
+                players.add(playersAdapter.getItem(i));
+            }
+            startActivity(listeWord);
+        }else{
+            Toast.makeText(ListPlayersActivity.this, "Il faut que chaque joueur ait une team", Toast.LENGTH_LONG).show();
+        }
     }
 
 }
