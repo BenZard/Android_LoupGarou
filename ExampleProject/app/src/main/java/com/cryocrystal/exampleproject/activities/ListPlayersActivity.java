@@ -92,12 +92,13 @@ public class ListPlayersActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void launchGame(View v){
-        Intent exampleActivityIntent = new Intent(this, ListWordsActivity.class);
+        Intent listeWord = new Intent(this, ListWordsActivity.class);
+            /*
         players = new ArrayList<>();
         for (int i = 0; i < playersAdapter.getCount(); i++){
             players.add(playersAdapter.getItem(i));
-        }
-        startActivity(exampleActivityIntent);
+        }*/
+        startActivity(listeWord);
     }
 
 }
