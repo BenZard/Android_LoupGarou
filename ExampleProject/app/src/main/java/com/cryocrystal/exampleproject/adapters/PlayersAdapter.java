@@ -26,10 +26,12 @@ public class PlayersAdapter extends ArrayAdapter<Player> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent)
+    {
         if (convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(layoutResource, parent, false);
         }
+
 
         final Player player = getItem(position);
         TextView playerName = (TextView) convertView.findViewById(R.id.player_name_text_view);
@@ -38,12 +40,21 @@ public class PlayersAdapter extends ArrayAdapter<Player> {
         final ImageView teamImage = (ImageView) convertView.findViewById(R.id.team_image_view);
         teamImage.setImageResource(player.getTeam().getDrawableRes());
 
+
         final Spinner team = (Spinner) convertView.findViewById(R.id.player_team_spinner);
         String teams[] = new String[] {"Bleu","Jaune","Neutre"};
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, teams); //selected item will look like a spinner set from XML
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         team.setAdapter(spinnerArrayAdapter);
-        team.setSelection(2);
+        if (player.getTeam()== Team.NEUTRE) {
+            team.setSelection(2);
+        }
+        else if (player.getTeam()== Team.BLUE) {
+            team.setSelection(0);
+        }
+        else if (player.getTeam()== Team.YELLOW) {
+            team.setSelection(1);
+        }
 
         team.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -51,18 +62,19 @@ public class PlayersAdapter extends ArrayAdapter<Player> {
                 switch (team.getSelectedItem().toString()){
                     case "Bleu" :
                         player.setTeam(Team.BLUE);
-                        teamImage.setImageResource(R.drawable.blue);
+                        //teamImage.setImageResource(R.drawable.blue);
                         break;
                     case "Jaune" :
                         player.setTeam(Team.YELLOW);
-                        teamImage.setImageResource(R.drawable.yellow);
+                        //teamImage.setImageResource(R.drawable.yellow);
                         break;
                     case "Neutre" :
                         player.setTeam(Team.NEUTRE);
-                        teamImage.setImageResource(R.drawable.neutral);
+                        //teamImage.setImageResource(R.drawable.neutral);
                         break;
 
                 }
+                teamImage.setImageResource(player.getTeam().getDrawableRes());
             }
 
             @Override
@@ -71,13 +83,13 @@ public class PlayersAdapter extends ArrayAdapter<Player> {
             }
 
         });
-
         Button buttonDelete = (Button) convertView.findViewById(R.id.delete_player_button);
         buttonDelete.setVisibility(inEditMode ? View.VISIBLE : View.GONE);
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 remove(player);
+
             }
         });
 

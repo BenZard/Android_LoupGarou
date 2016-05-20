@@ -53,6 +53,8 @@ public class ListPlayersActivity extends AppCompatActivity implements View.OnCli
         });
     }
 
+
+
     @Override
     public void onClick(View v) {
         String playerName = playerEditText.getText().toString();
@@ -73,7 +75,13 @@ public class ListPlayersActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        Button play = (Button) findViewById(R.id.btnPlay);
+        play.setVisibility(View.INVISIBLE);
         playersAdapter.setEditMode(isChecked);
+        if (playersAdapter.getCount() >= 4){
+
+            play.setVisibility(View.VISIBLE);
+        }
     }
 
 
