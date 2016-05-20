@@ -61,7 +61,6 @@ public class PlayersAdapter extends ArrayAdapter<Player> {
                         player.setTeam(Team.NEUTRE);
                         teamImage.setImageResource(R.drawable.neutral);
                         break;
-
                 }
             }
 

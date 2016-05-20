@@ -1,6 +1,6 @@
 package com.cryocrystal.exampleproject.models;
 
-public class Player {
+public final class Player {
     private String name;
     private Team team;
 

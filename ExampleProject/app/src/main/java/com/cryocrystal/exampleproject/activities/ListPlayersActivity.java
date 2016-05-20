@@ -1,5 +1,6 @@
 package com.cryocrystal.exampleproject.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -76,5 +77,9 @@ public class ListPlayersActivity extends AppCompatActivity implements View.OnCli
         playersAdapter.setEditMode(isChecked);
     }
 
+    public void launchGame(View v){
+        Intent exampleActivityIntent = new Intent(this, GameActivity.class);
+        startActivity(exampleActivityIntent);
+    }
 
 }

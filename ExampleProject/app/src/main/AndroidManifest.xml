@@ -23,6 +23,7 @@
         <activity android:name=".activities.ListPlayersActivity"/>
         <activity android:name=".activities.FetchImageActivity"/>
         <activity android:name=".activities.GalleryActivity"/>
+        <activity android:name=".activities.GameActivity"/>
     </application>
 
 </manifest>
