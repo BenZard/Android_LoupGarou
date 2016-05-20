@@ -32,8 +32,8 @@ public class GameActivity extends AppCompatActivity {
         currentMot = (TextView) findViewById(R.id.currentMot);
         ListMots listMots = new ListMots();
         mots = listMots.getMots();
-
         currentMot.setText(mots.get(0));
+
     }
 
     @Override
