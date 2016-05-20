@@ -2,6 +2,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Player"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30sp"
+        android:id="@+id/currentPlayer"/>
+
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
@@ -13,6 +23,7 @@
             android:layout_height="match_parent"
             android:src="@drawable/card_timesup"
             android:layout_gravity="center"
+            android:id="@+id/img_game"
             />
         <TextView
             android:layout_width="wrap_content"

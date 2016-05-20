@@ -17,6 +17,10 @@ public class ListMots {
         mots.add("Jamel Debbouze");
     }
 
+    public ArrayList<String> getMots() {
+        return mots;
+    }
+
     public void addMot(String mot) {
         mots.add(mot);
     }
