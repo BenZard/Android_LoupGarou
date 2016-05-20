@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.cryocrystal.exampleproject.R;
 import com.cryocrystal.exampleproject.adapters.WordsAdapter;
+import com.cryocrystal.exampleproject.models.ListMots;
 import com.cryocrystal.exampleproject.models.Word;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class ListWordsActivity extends AppCompatActivity implements View.OnClick
     private Button wordAddButton;
     private WordsAdapter wordsAdapter;
     private CheckBox editModeCheckbox;
+    public static ListMots wordsList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,10 +72,10 @@ public class ListWordsActivity extends AppCompatActivity implements View.OnClick
                 play.setVisibility(View.VISIBLE);
             }
         }
-        /*List<Word> words = new ArrayList<>();
+
         for (int i = 0; i < wordsAdapter.getCount(); i++){
-            words.add(wordsAdapter.getItem(i));
-        }*/
+            wordsList.addMot(wordsAdapter.getItem(i));
+        }
 
     }
 

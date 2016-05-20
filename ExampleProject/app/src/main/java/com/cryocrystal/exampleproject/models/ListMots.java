@@ -6,27 +6,22 @@ import java.util.ArrayList;
  * Created by Riper on 20/05/2016.
  */
 public class ListMots {
-    ArrayList<String> mots = new ArrayList<String>();
+    ArrayList<Word> words = new ArrayList<Word>();
 
     public ListMots(){
-        mots.add("Leonardo Di Caprio");
-        mots.add("Céline Dion");
-        mots.add("Barack Obama");
-        mots.add("Donald Trump");
-        mots.add("Zizou");
-        mots.add("Jamel Debbouze");
+
     }
 
-    public ArrayList<String> getMots() {
-        return mots;
+    public ArrayList<Word> getMots() {
+        return words;
     }
 
-    public void addMot(String mot) {
-        mots.add(mot);
+    public void addMot(Word mot) {
+        words.add(mot);
     }
 
     public void deleteMot(int pos){
-        mots.remove(pos);
+        words.remove(pos);
     }
 
 }
