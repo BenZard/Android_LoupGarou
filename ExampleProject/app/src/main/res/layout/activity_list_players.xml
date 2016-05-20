@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="launchGame"
-        android:text="Lancerla partie"/>
+        android:text="Choisir les mots"/>
 
     <android.support.v7.widget.ListViewCompat
         android:id="@+id/player_list_view"
