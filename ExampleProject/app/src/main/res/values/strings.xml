@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ExampleProject</string>
+    <string name="to_b">To B</string>
+    <string name="players_name">Player\'s name</string>
+    <string name="add_player">Add</string>
+    <string name="edit_mode">Edit</string>
+    <string name="delete">Delete</string>
+</resources>

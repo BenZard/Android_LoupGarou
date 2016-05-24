@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Player"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30sp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/currentPlayer"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30"
+        android:layout_alignParentLeft="true"
+        android:textSize="45sp"
+        android:textColor="@color/red"
+        android:id="@+id/timer"/>
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center|center_vertical"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/card_timesup"
+            android:layout_gravity="center"
+            android:id="@+id/img_game"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:id="@+id/currentMot"
+            android:text="My Label"
+            android:layout_marginBottom="90px"
+            android:layout_marginRight="80px"
+            />
+    </FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/score"
+        android:textSize="20sp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Démarrer le timer"
+        android:id="@+id/starttimerbtn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="timerStart"
+        android:height="75dp"
+        />
+</RelativeLayout>
